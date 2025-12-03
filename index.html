@@ -3,132 +3,156 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lado Ladi Fashion Studio - Coming Soon</title>
-
+<title>Lado Ladi Fashion Studio</title>
 <style>
-  /* Background gradient animation for style caching effect */
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  /* Reset and base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
   }
 
+  /* Background Image */
   body {
-    margin: 0;
-    height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(-45deg, #FFDEE9, #B5FFFC, #9EEBCF, #FFE29F);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Overlay to darken the background for readability */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+  }
+
+  header, footer {
+    position: relative;
+    z-index: 1;
+    padding: 20px 40px;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+  }
+
+  header {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+  }
+
+  main {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #222;
+    padding: 0 20px;
     text-align: center;
-    overflow: hidden;
   }
 
-  .container {
-    background: rgba(255 255 255 / 0.85);
-    padding: 40px 30px;
-    border-radius: 20px;
-    max-width: 400px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    animation: fadeIn 1.2s ease forwards;
+  main .tagline {
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-style: italic;
+    color: #ddd;
   }
 
-  /* Fade-in animation */
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(30px);}
-    to {opacity: 1; transform: translateY(0);}
+  footer {
+    font-size: 1.2rem;
   }
 
-  h1 {
+  .coming-soon {
     font-size: 2.5rem;
-    margin-bottom: 15px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    margin-bottom: 15px;
   }
 
-  p {
-    font-size: 1.1rem;
-    color: #444;
-    margin-bottom: 30px;
-    line-height: 1.5;
+  .connect {
+    margin-top: 15px;
   }
 
-  .btn {
+  .connect a {
     display: inline-block;
-    padding: 14px 28px;
-    margin: 10px 15px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
+    margin: 0 12px;
     text-decoration: none;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    user-select: none;
-    animation: bounceIn 1s ease 1.5s forwards;
-    opacity: 0;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: #e1306c; /* Instagram pink */
+    box-shadow: 0 5px 15px rgba(225,48,108,0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .connect a.call {
+    background: #1da1f2; /* Twitter blue for call */
+    box-shadow: 0 5px 15px rgba(29,161,242,0.6);
+  }
+  .connect a:hover {
+    background: #b7215a;
+    box-shadow: 0 10px 20px rgba(183,33,90,0.8);
+  }
+  .connect a.call:hover {
+    background: #1783d6;
+    box-shadow: 0 10px 20px rgba(23,131,214,0.8);
   }
 
-  /* Bounce in animation for buttons */
-  @keyframes bounceIn {
-    0% { transform: scale(0.7); opacity: 0; }
-    60% { transform: scale(1.15); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-
-  .btn.insta {
-    background: #E1306C;
-  }
-  .btn.insta:hover {
-    background: #c62857;
-    box-shadow: 0 10px 20px rgba(225,48,108,0.7);
-    transform: scale(1.1);
-  }
-
-  .btn.call {
-    background: #1DA1F2;
-  }
-  .btn.call:hover {
-    background: #0d8ddb;
-    box-shadow: 0 10px 20px rgba(29,161,242,0.7);
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 480px) {
-    .container {
-      max-width: 90vw;
-      padding: 30px 20px;
+  @media (max-width: 600px) {
+    header {
+      font-size: 1.8rem;
+      padding: 15px 20px;
     }
-    h1 {
+    main .tagline {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+    .coming-soon {
       font-size: 2rem;
     }
-    .btn {
+    footer {
+      font-size: 1rem;
+      padding: 15px 20px;
+    }
+    .connect a {
+      padding: 8px 18px;
+      margin: 0 8px;
       font-size: 0.9rem;
-      padding: 12px 24px;
-      margin: 8px 10px;
     }
   }
 </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Lado Ladi Fashion Studio</h1>
-    <p>We are crafting something amazing for you.<br/>Stay tuned and connect with us!</p>
 
-    <a
-      href="https://instagram.com/YOUR_INSTAGRAM_USERNAME"
-      target="_blank"
-      class="btn insta"
-      rel="noopener noreferrer"
-      >Follow us on Instagram</a
-    >
-    <a href="tel:+91YOURNUMBER" class="btn call">Call Us: +91 YOUR NUMBER</a>
+<header>
+  Lado Ladi Fashion Studio
+</header>
+
+<main>
+  <div class="tagline">
+    "We bring your thoughts to life in wedding clothes. Rent. Wear. Shine."
   </div>
+</main>
+
+<footer>
+  <div class="coming-soon">Coming Soon</div>
+  <div class="connect">
+    <a href="https://instagram.com/lado_ladi_fashion_studio" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="tel:+919624069304" class="call">Call Us: +91 96240 69304</a>
+  </div>
+</footer>
+
 </body>
 </html>
